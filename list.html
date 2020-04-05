@@ -11,16 +11,17 @@
     <script>
         const electron = require("electron");
         const {ipcRenderer} = electron;
+        
         ipcRenderer.send("appointment:request:list");
         
-        ipcRenderer.on("appointment:request:list", (event, appointment) => {
-            const listDiv = document.getElementById("List");
-            appointment.forEach(appointment => {
+        ipcRenderer.on("appointment:request:list", (event, appointments) => {
+            const listDiv = document.getElementById("list");
+            appointments.forEach(appointment => {
                 const appointmentDiv = document.createElement("div");
                 
                 const nameParagraph = document.createElement("p");
                 nameParagraph.innerHTML = `Name : ${appointment.name}`;
-            
+             
                 const numberParagraph = document.createElement("p");
                 numberParagraph.innerHTML = `Phone Number : ${appointment.number}`;
 
