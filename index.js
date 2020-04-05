@@ -1,5 +1,4 @@
 const electron = require("electron");
-
 const {app, BrowserWindow, Menu, ipcMain} = electron;
 
 let todayWindow;
@@ -75,6 +74,15 @@ ipcMain.on("appointment:create", (event, appointment) => {
 ipcMain.on("appointment:request:list", event => {
     console.log("here");
 });
+
+ipcMain.on("appointment:request:today", event => {
+    console.log("here1");
+});
+
+ipcMain.on("appointment:done", (event, id )=> {
+    console.log("here2");
+});
+
 
 const menuTemplate = [{
     label: "File",
